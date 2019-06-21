@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // 方法一
+        function unique1(arr){
+            var b=[];
+            for(var i=0; i<arr.length; i++){
+                if(b.indexOf(arr[i])==-1){
+                    b.push(arr[i]);
+                }
+            }
+            return b;
+        }
+    // 方法二
+        function unique2 (arr){
+            for(var i=0;i<arr.length;i++){
+                for(var j=i+1;j<arr.length;j++){
+                    if(arr[i]===arr[j]){
+                        arr.splice(j,1);
+                        j--;
+                    }
+                }
+            }
+            return arr;
+        }
+        var a=['c', 'a', 'z', 'a', 'x', 'a'];
+        console.log(unique1(a));
+        console.log(unique2(a));
+    </script>
+</body>
+</html>
