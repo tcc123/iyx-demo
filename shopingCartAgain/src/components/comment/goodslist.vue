@@ -53,6 +53,12 @@ export default {
       check: false
     }
   },
+  watch: {
+    // 监听checked,如果checked数据发生改变则改变check的值
+    checked: function () {
+      this.check = this.checked
+    }
+  },
   methods: {
     checkAll () {
       this.$store.commit('checkAll', this.check)
@@ -60,7 +66,6 @@ export default {
     },
     select () {
       this.$store.commit('select')
-      this.check = this.checked
     },
     minius (index) {
       this.$store.commit('minius', index)

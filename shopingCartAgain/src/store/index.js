@@ -23,20 +23,19 @@ export default new Vuex.Store({
         state.goodsList.push(item)
         state.checked = false
       } else {
-        let index = state.goodsList.findIndex((x) => {
+        let index = state.goodsList.findIndex(x => {
           return x.id === item.id
         })
         state.goodsList[index].purchaseQuantity++
       }
     },
     checkAll (state, check) {
-      state.goodsList.map((item, index) => { item.checked = !check })
+      state.goodsList.map(item => { item.checked = !check })
     },
     select (state) {
-      let result = state.goodsList.every((item) => {
+      let result = state.goodsList.every(item => {
         return item.checked === true
-      }
-      )
+      })
       state.checked = result
     },
     minius (state, index) {
@@ -53,7 +52,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    listInfo ({commit, state}) {
+    listInfo ({commit}) {
       axios.get('http://10.10.2.80:7300/mock/5ce3666acb7870211c4d7b35/example/mock').then((res) => {
         commit('updateList', res.data.data.list)
       })
