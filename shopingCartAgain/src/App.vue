@@ -3,7 +3,6 @@
     <div id="comment">
       <shopping-list></shopping-list>
       <goods-list></goods-list>
-      <Account></Account>
     </div>
   </div>
 </template>
@@ -12,13 +11,11 @@
 import './assets/iconfont/iconfont.css'
 import shoppingList from './components/comment/shoppinglist.vue'
 import goodsList from './components/comment/goodslist.vue'
-import Account from './components/comment/account.vue'
 export default {
   name: 'App',
   components: {
     'shopping-list': shoppingList,
-    'goods-list': goodsList,
-    'Account': Account
+    'goods-list': goodsList
   }
 }
 </script>
@@ -26,16 +23,12 @@ export default {
 <style lang="scss" rel="stylesheet/scss">
 @import "./assets/styles/reset.scss";
 #app {
-  width: 100%;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
   color: #2c3e50;
-  margin-top: 70px;
-  #comment {
-    width: 500px;
-    margin: 0 auto;
-    padding-top: 32px;
-  }
+  margin: 0 auto;
+  margin-top: 60px;
 }
 </style>

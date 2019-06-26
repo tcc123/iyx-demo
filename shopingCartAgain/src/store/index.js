@@ -13,14 +13,6 @@ export default new Vuex.Store({
     goodsId: [],
     checked: false
   },
-  getters: {
-    checked: (state) => {
-      // for (let i = 0; i < state.goodsList.length; i++) {
-      //   state.goodsList[i].checked = !state.checked
-      // }
-      state.goodsList.map((item, index) => { state.goodsList[index].checked = !state.checked })
-    }
-  },
   mutations: {
     updateList (state, payload) {
       state.shoppingList = payload
@@ -31,23 +23,40 @@ export default new Vuex.Store({
         state.goodsList.push(item)
         state.checked = false
       } else {
-        let index = state.goodsList.findIndex(function (x) {
+        let index = state.goodsList.findIndex((x) => {
           return x.id === item.id
         })
         state.goodsList[index].purchaseQuantity++
       }
+    },
+    checkAll (state, check) {
+      state.goodsList.map((item, index) => { item.checked = !check })
+    },
+    select (state) {
+      let result = state.goodsList.every((item) => {
+        return item.checked === true
+      }
+      )
+      state.checked = result
+    },
+    minius (state, index) {
+      return state.goodsList[index].purchaseQuantity > 1 ? state.goodsList[index].purchaseQuantity-- : 1
+    },
+    add (state, index) {
+      return state.goodsList[index].purchaseQuantity++
+    },
+    checkDel (state, payload) {
+      state.goodsList.splice(payload.index, 1)
+      state.goodsId.splice(payload.index, 1)
+      payload.item.purchaseQuantity = 1
+      payload.item.checked = false
     }
-    // checkAll (state) {
-    //   for (let i = 0; i < state.goodsList.length; i++) {
-    //     state.goodsList[i].checked = !state.checked
-    // }
   },
   actions: {
     listInfo ({commit, state}) {
-      axios.get('http://10.10.2.80:7300/mock/5ce3666acb7870211c4d7b35/example/mock').then((response) => {
-        commit('updateList', response.data.data.list)
+      axios.get('http://10.10.2.80:7300/mock/5ce3666acb7870211c4d7b35/example/mock').then((res) => {
+        commit('updateList', res.data.data.list)
       })
     }
   }
-
 })

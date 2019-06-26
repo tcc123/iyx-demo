@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <td>
-            <input type="checkbox" name="checkboxs" v-model="checked" @click="checkAll">
+            <input type="checkbox" name="checkboxs" v-model="check" @click="checkAll">
           </td>
           <td>全选</td>
           <td>商品信息</td>
@@ -17,7 +17,7 @@
       <tbody>
         <tr v-for="(item,index) in goodsList" :key="index">
           <td>
-            <input type="checkbox" name="checkboxs" v-model="item.checked" >
+            <input type="checkbox" name="checkboxs" v-model="item.checked" @change="select">
           </td>
           <td>
             <img :src="item.subimage1Filename">
@@ -28,30 +28,48 @@
           </td>
           <td>￥{{item.unitPrice}}</td>
           <td>
-            <em>-</em>
+            <em @click="minius(index)">-</em>
             <input v-model.number="item.purchaseQuantity" class="number">
-            <em>+</em>
+            <em @click="add(index)">+</em>
           </td>
           <td>￥{{item.unitPrice * item.purchaseQuantity}}</td>
           <td>
-            <button>删除</button>
+            <button @click="checkDel(item,index)">删除</button>
           </td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>总价:{{sum}}</tr>
+      </tfoot>
     </table>
   </div>
 </template>
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState } from 'vuex'
 export default {
   name: 'goodsList',
   data () {
-    return {}
+    return {
+      check: false
+    }
   },
   methods: {
     checkAll () {
-    //   this.$store.commit('checkAll')
-      this.checked()
+      this.$store.commit('checkAll', this.check)
+      // this.checked()
+    },
+    select () {
+      this.$store.commit('select')
+      this.check = this.checked
+    },
+    minius (index) {
+      this.$store.commit('minius', index)
+    },
+    add (index) {
+      this.$store.commit('add', index)
+    },
+    checkDel (item, index) {
+      this.$store.commit('checkDel', {index: index, item: item})
     }
   },
   computed: {
@@ -59,7 +77,16 @@ export default {
       goodsList: state => state.goodsList,
       checked: state => state.checked
     }),
-    ...mapGetters(['checked'])
+    sum () {
+      let total = 0
+      for (let i = 0; i < this.goodsList.length; i++) {
+        let items = this.goodsList[i]
+        if (items.checked === true) {
+          total += items.unitPrice * items.purchaseQuantity
+        }
+      }
+      return total
+    }
   },
   created () {}
 }
@@ -84,10 +111,11 @@ tr {
   /* border-collapse: collapse; */
   border: 1px solid #eee;
 }
-thead tr,
-tfoot tr {
+thead tr,tfoot tr{
+  text-align: center;
   background: #e3e3e3;
   height: 40px;
+  line-height: 40px;
 }
 td {
   padding: 5px 15px;

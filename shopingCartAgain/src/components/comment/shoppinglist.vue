@@ -54,6 +54,7 @@ li{
   float: left;
   width: 120px;
   height: 150px;
+  margin-right: 20px;
 }
 img {
   width: 100px;
