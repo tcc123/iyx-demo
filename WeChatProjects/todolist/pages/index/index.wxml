@@ -1,0 +1,29 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="header">
+    <input class="new-todo" value="{{ inputValue }}" placeholder="Anything here..." auto-focus bindinput="inputChangeHandle" />
+    <button type="primary" size="mini" bindtap="addTodoHandle">
+        + Add
+    </button>
+  </view>
+  <block wx:if="{{ lists.length }}">
+    <view class="todos">
+      <view class="item" wx:for="{{ lists }}" wx:key="{{ index }}" bindtap="toggleTodoHandle" data-index="{{ index }}">
+        <checkbox checked="{{item.completed}}"/>
+        <text class="name">{{ item.name }}</text>
+        <icon class="remove" type="clear" size="16" catchtap="removeTodoHandle" data-index="{{ index }}"/>
+      </view>
+    </view>
+    <view class="footer">
+      <text class="btn" bindtap="toggleAllHandle">Toggle all</text>
+      <text wx:if="{{ leftCount }}">{{ leftCount }} item{{ leftCount === 1 ? '' : 's' }} left</text>
+      <text class="btn" bindtap="clearCompletedHandle">Clear completed</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="empty">
+      <text class="title">Congratulations!</text>
+      <text class="content">There is no remaining TODOS</text>
+    </view>
+  </block>
+</view>
