@@ -50,6 +50,7 @@ Page({
     this.save()
   },
   toggleTodoHandle: function (e) {
+    // 获取当前点击元素的index值
     var index = e.currentTarget.dataset.index
     var lists = this.data.lists
     lists[index].completed = !lists[index].completed
@@ -67,6 +68,7 @@ Page({
     this.save()
   },
   removeTodoHandle:function(e){
+    // 获取当前点击元素的index值
     var index = e.currentTarget.dataset.index
     var lists = this.data.lists
     var remove = lists.splice(index, 1)[0]

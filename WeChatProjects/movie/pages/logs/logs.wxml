@@ -1,0 +1,44 @@
+<!--logs.wxml-->
+<view class="container">
+  <view class="search" >
+      <icon class="searchcion" size='20' type='search'></icon>  
+      <input class="input" placeholder="请输入关键字" value="{{searchValue}}"/>  
+  </view>
+  <view class="newMovies">
+    <view class="tit">新片榜</view>
+    <view class="newMovie" wx:for="{{movies}}" wx:key="{{index}}">
+      <image class="left" src="{{item.img}}"></image>
+      <view class="right">
+        <view class="name">
+          <view class="title">{{item.title}}</view>
+          <view class="rate"> 豆瓣评分： {{item.rate}}</view>
+        </view>
+        <view class="num" >
+          <view class="number">{{item.number}}</view>
+          <view class="comment"> 人评论过</view>
+        </view>
+        <view class="actor" >主演： {{item.actor}}</view>
+        <view class="date" >{{item.date}}</view>
+      </view>
+    </view>
+    <view class="all">查看全部排行榜</view>
+  </view>
+  <view class="top">
+    <view class="tit">Top250</view>
+    <view class="newMovie" wx:for="{{list1}}" wx:key="{{index}}">
+      <image class="left" src="{{item.img}}"></image>
+      <view class="right">
+        <view class="name">
+          <view class="title">{{item.title}}</view>
+          <view class="rate"> 豆瓣评分： {{item.rate}}</view>
+        </view>
+        <view class="num" >
+          <view class="number">{{item.number}}</view>
+          <view class="comment"> 人评论过</view>
+        </view>
+        <view class="actor" >主演： {{item.actor}}</view>
+        <view class="date" >{{item.date}}</view>
+      </view>
+    </view>
+  </view>
+</view>

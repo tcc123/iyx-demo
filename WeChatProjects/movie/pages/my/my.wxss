@@ -1,0 +1,54 @@
+/* pages/my/my.wxss */
+page{
+    background: rgb(242, 239, 239);
+    font-size: 14px;
+    color: #a0a0a0;
+}
+.container{
+    padding: 0;
+}
+.content{
+    padding: 200rpx 0;
+}
+button{
+    background: #07c160;
+    color: #fff;
+    font-weight: 500;
+}
+.info{
+    width: 750rpx;
+    height: 300rpx;
+    background: #dc4b2e;
+    margin-bottom: 20rpx;
+}
+.userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    margin: 60rpx 331rpx 15rpx;
+    border-radius: 50%;
+}
+
+.userinfo-nickname {
+    color: #fff;
+    margin:0 370rpx;
+}
+.msg{
+    width: 700rpx;
+    height: 175rpx;
+    background: #fff;
+    padding: 0 25rpx;
+}
+.release,.author{
+    height: 87rpx;
+    line-height: 87rpx;
+}
+.release{
+    border-bottom: 1px solid rgb(242, 239, 239);
+}
+.title,.name{
+    float: left;
+    color: #000;
+}
+.num,.email{
+    float: right;
+}
