@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/my/my"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ca2100",
+    "navigationBarTitleText": "马达电影",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#a0a0a0",
+    "selectedColor": "#ca2100",
+    "backgroundColor": "#fff",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "院线",
+        "iconPath": "images/movie.png",
+        "selectedIconPath": "images/movieSelect.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "豆瓣榜单",
+        "iconPath": "images/rank.png",
+        "selectedIconPath": "images/rankSelect.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/mySelect.png"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+<!--pages/my/my.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <view  wx:if="{{!hasUserInfo}}">
+      <view class='content'>
+        <view>申请获取以下权限</view>
+        <text>获得你的公开信息(昵称，头像等)</text>
+        <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      </view>
+    </view>
+    <block wx:else>
+      <view class="info">
+        <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      </view>
+      <view class="msg">
+        <view class="release">
+          <view class="title">版本号</view> 
+          <view class="num">v1.0.0</view>
+        </view> 
+        <view class="author">
+          <view class="name">联系作者</view>
+          <view class="email">1191173768@qq.com</view>  
+        </view> 
+      </view>
+    </block>
+  </view>
+</view>
