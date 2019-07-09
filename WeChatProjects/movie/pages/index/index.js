@@ -12,7 +12,7 @@ Page({
   
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
-    var reqTask = wx.request({
+    var reqTask = wx.request({ //todo 定义变量的原因？
       url: 'http://10.10.2.80:7300/mock/5ce3666acb7870211c4d7b35/example/',
       method: 'GET',
       success: (res)=>{
@@ -24,7 +24,7 @@ Page({
       }
     });
     var that = this 
-    wx.getSystemInfo({ 
+    wx.getSystemInfo({ //todo 为什么写这些代码？
       success: function (res) { 
         that.setData({ 
             clientHeight: res.windowHeight 
@@ -58,7 +58,7 @@ Page({
   swichNav: function (e) {
     // console.log(e);
     this.setData({
-      currentTab: e.target.dataset.current
+      currentTab: e.target.dataset.current //todo 这里应写为e.currentTarget.dataset.current 否则在手机上不生效
     })
   },
   swiperChange: function (e) {
