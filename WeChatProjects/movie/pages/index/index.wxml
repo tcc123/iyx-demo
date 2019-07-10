@@ -6,7 +6,7 @@
     <view class="tab-item {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">即将上映</view>
   </view>
   <!--内容-->
-  <swiper class="swiper" style="height:{{clientHeight+'px'}}" current="{{currentTab}}" duration="200" bindchange="swiperChange">
+  <swiper class="swiper" style="height: 100vh;" current="{{currentTab}}" duration="200" bindchange="swiperChange">
     <!-- 第一个页面 -->
     <swiper-item>
       <scroll-view class="scrollView" scroll-y="true" lower-threshold="50" bindscrolltolower="loadmore"> 

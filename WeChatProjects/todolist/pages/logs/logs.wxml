@@ -1,5 +1,5 @@
 <!--logs.wxml-->
-<view class="container">
+<!-- <view class="container">
   <view class="logs" wx:if="{{ logs.length }}">
     <view class="item" wx:for="{{ logs }}" wx:key="{{ index }}">
       <text class="timestamp">[{{ item.timestamp }}]</text>
@@ -7,4 +7,4 @@
       <text class="action">{{ item.action }}</text>
     </view>
   </view>
-</view>
+</view> -->
